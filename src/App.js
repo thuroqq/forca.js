@@ -34,13 +34,13 @@ function App() {
 
   // processo d letter input
   const verifyLetter = () => {
-    setGameStage(Stages[3].name);
+    setGameStage(Stages[2].name);
   }
   
   return (
     <div className="App">
     {gameStage=== "start" && <StartScreen startGame={startGame} />}
-    {gameStage=== "game" && <Game/>}
+    {gameStage=== "game" && <Game verifyLetter={verifyLetter}/>}
     {gameStage=== "end" && <GameOver/>}
     </div>
   );
