@@ -22,9 +22,13 @@ const Stages = [
 
 function App() {
   const [gameStage, setGameStage] =useState(Stages[0].name);
-  const [words] = useState(wordsList)
+  const [words] = useState(wordsList);
+  console.log(words);
 
-  console.log(words)
+
+  const [pickedWord, setPickedWord] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
+  const [letter, setLetters] = useState("");
 
 // start pag 2
   const startGame = () => { 
@@ -37,11 +41,17 @@ function App() {
     setGameStage(Stages[2].name);
   }
   
+// restarts the game 
+const retry = () => {
+  setGameStage(Stages[0].name)
+
+}
+  
   return (
     <div className="App">
     {gameStage=== "start" && <StartScreen startGame={startGame} />}
-    {gameStage=== "game" && <Game verifyLetter={verifyLetter}/>}
-    {gameStage=== "end" && <GameOver/>}
+    {gameStage=== "game" && <Game verifyLetter={verifyLetter} />}
+    {gameStage=== "end" && <GameOver retry={retry}/>}
     </div>
   );
 }
