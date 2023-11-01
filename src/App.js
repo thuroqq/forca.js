@@ -26,11 +26,22 @@ function App() {
 
   console.log(words)
 
+// start pag 2
+  const startGame = () => { 
+    setGameStage(Stages[1].name);
+
+  }
+
+  // processo d letter input
+  const verifyLetter = () => {
+    setGameStage(Stages[3].name);
+  }
+  
   return (
     <div className="App">
-    {gameStage=== "start" && <StartScreen/>}
-    {gameStage=== "game" && <StartScreen/>}
-    {gameStage=== "end" && <StartScreen/>}
+    {gameStage=== "start" && <StartScreen startGame={startGame} />}
+    {gameStage=== "game" && <Game/>}
+    {gameStage=== "end" && <GameOver/>}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import "./GameOver.css";
-const GameOver = () => {
+const GameOver = ({verifyLetter}) => {
   return (
     <div>GameOver</div>
   )
