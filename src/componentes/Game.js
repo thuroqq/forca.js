@@ -1,6 +1,8 @@
 import "./Game.css";
 const Game = ({verifyLetter, pickedCategory, letter, pickedWord, score, guesses, wrongLetters, guessedLetters}) => {
   return (
+    
+
   <div className="game">
       <p className="points">  
         <span> Pontuação: {score}</span>
