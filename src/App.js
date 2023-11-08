@@ -74,8 +74,8 @@ function App() {
   }
 
   // processo d letter input
-  const verifyLetter = () => {
-    setGameStage(Stages[2].name);
+  const verifyLetter = (Letter) => {
+    console.log(Letter);
   }
   
 // restarts the game 
