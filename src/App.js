@@ -38,21 +38,25 @@ function App() {
   const [score, setScore ] = useState (0);
 
 
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     // pick a random category
 
     const categories = Object.keys(words)
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]
-    console.log(category)
+ 
 
     // pick a random word
-    const word = words[category] [Math.floor(Math.random() * words[category].length)]
-    console.log(word)
-    return {word, category}
-  }
+    const word = words[category] [Math.floor(Math.random() * words[category].length)];
+  
+    return {word, category};
+  },[words]);
 
 // start pag game
-  const startGame = () => { 
+  const startGame = useCallback(() => { 
+    // clear all letters
+    clearLetterStates();
+
+
     //pick word and category 
     const {word, category } = pickWordAndCategory();
     // create an array of letters 
@@ -60,8 +64,7 @@ function App() {
 
     wordLetters= wordLetters.map((l) => l.toLowerCase())
 
-    console.log (word, category) ;
-    console.log (wordLetters);
+  
 
     setGameStage(Stages[1].name);
 
@@ -71,7 +74,7 @@ function App() {
     setLetters(wordLetters);
     
 
-  }
+  });
 
   // processo d letter input
   const verifyLetter = (Letter) => {
@@ -128,7 +131,7 @@ function App() {
       // restart game with new word
       startGame();
     }
-  }, [guessedLetters]);
+  }, [guessedLetters, letter, startGame]);
 
 
 // restarts the game 
