@@ -101,8 +101,16 @@ function App() {
 
     }
   };
-  console.log(guessedLetters);
-  console.log(wrongLetters);
+  // reset all states
+  useEffect(()=> {
+    if(guesses <= 0) {
+      
+      setGameStage(Stages[2].name);
+    }
+
+  }, [guesses])
+
+
 // restarts the game 
 const retry = () => {
   setGameStage(Stages[0].name)
