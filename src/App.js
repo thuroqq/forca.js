@@ -117,6 +117,19 @@ function App() {
 
   }, [guesses])
 
+  // check win condition
+  useEffect(()=> {
+    const uniqueLetters = [... new Set(letter)];
+
+    // win condition 
+    if(guessedLetters.length === uniqueLetters.length) {
+      // add score
+      setScore((actualScore) => (actualScore += 100));
+      // restart game with new word
+      startGame();
+    }
+  }, [guessedLetters]);
+
 
 // restarts the game 
 const retry = () => {
