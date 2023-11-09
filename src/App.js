@@ -96,12 +96,13 @@ function App() {
       [...actualWrongLetters,
         normalizedLetter,
       ]);
-    }
+      //  reduces attempts 
+      setGuesses((actualGuesses) => actualGuesses -1);
 
-    console.log(guessedLetters);
-    console.log(wrongLetters);
+    }
   };
-  
+  console.log(guessedLetters);
+  console.log(wrongLetters);
 // restarts the game 
 const retry = () => {
   setGameStage(Stages[0].name)
